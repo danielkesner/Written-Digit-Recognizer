@@ -76,7 +76,8 @@ public class Grid extends JComponent {
 	public static void main(String[] a) {
 		
 		// Choose which image to draw (note: zero-based,
-		// so imageIndex = 0 will draw the first line of semeion.data)
+		// imageIndex = 0 will draw the first line of semeion.data)
+		// I don't check for invalid arguments so be sure that -1 < imageIndex < 1593 (if using semeion.data)
 		imageIndex = 4;
 		
 		JFrame window = new JFrame();

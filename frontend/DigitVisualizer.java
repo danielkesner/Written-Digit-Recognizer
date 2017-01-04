@@ -52,7 +52,7 @@ public class DigitVisualizer extends JComponent {
 	// Remember: index=0 is the first image
 	public static double[] populateArr(String path, int index) {
 
-		double[] buff = new double[256];
+		double[] buff = new double[numPixels];
 		int stop = 0;
 
 		try {

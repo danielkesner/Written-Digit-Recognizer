@@ -55,7 +55,7 @@ public class ImageProcessor {
 		int red, green, blue;
 		
 		// Return the average of red, green, blue values of each pixel
-		// Initially produces pixels such that white is 255, black is 0; translate to black is 1, 0 is white
+		// Initially produces pixels such that white is 255, black is 0; code to black is 1, 0 is white
 		for (int i = 0; i < vec.length; i++) {
 			
 			red = (vec[i] >> 16) & 0x000000FF;;
@@ -95,7 +95,9 @@ public class ImageProcessor {
 		}
 	}
 	
-	public static String createANNInput(BufferedImage image, int numberToIdentify) {
+	// Returns the feature vector to be used as input to the ANN
+	public static String createANNInput(BufferedImage image, int numberToIdentify,
+			boolean appendClassifierString) {
 		
 		double[] pixels = getPixelVector(image);
 		String ret = "";
@@ -104,40 +106,24 @@ public class ImageProcessor {
 			ret += Double.toString(pixels[i]) + " ";
 		}
 		
-		ret += getIdentifierString(numberToIdentify);
+		if (appendClassifierString)
+			ret += getIdentifierString(numberToIdentify);
 		
 		return ret;
 	}
 	
 	public static void main(String[] a) throws IOException {
+		
+		// Example workflow below
 
-//		convertToBlackAndWhite("src/data/cropped_0.png"); // creates cropped_0_bw.png in dir
-//		convertToBlackAndWhite("src/data/cropped_0_2.png");
-//		convertToBlackAndWhite("src/data/cropped_7.png");
-//		convertToBlackAndWhite("src/data/cropped_3.png");
-//		convertToBlackAndWhite("src/data/cropped_3_2.png");
-//		
-//		ImageResizer.resize("src/data/cropped_0_bw.png", "src/data/processed_0.png", 16, 16);
-//		ImageResizer.resize("src/data/cropped_0_2_bw.png", "src/data/processed_0_2.png", 16, 16);
-//		ImageResizer.resize("src/data/cropped_7_bw.png", "src/data/processed_7.png", 16, 16);
-//		ImageResizer.resize("src/data/cropped_3.png", "src/data/processed_3.png", 16, 16);
-//		ImageResizer.resize("src/data/cropped_3_2.png", "src/data/processed_3_2.png", 16, 16);
-//		
-//		BufferedImage img_0 = createObjectFromFile("src/data/processed_0.png");
-//		BufferedImage img_0_2 = createObjectFromFile("src/data/processed_0_2.png");
-//		BufferedImage img_7 = createObjectFromFile("src/data/processed_7.png");
-//		BufferedImage img_3 = createObjectFromFile("src/data/processed_3.png");
-//		BufferedImage img_3_2 = createObjectFromFile("src/data/processed_3_2.png");
-//		
-//		System.out.println("0: " + createANNInput(img_0, 0));
-//		System.out.println("0: " + createANNInput(img_0_2, 0));
-//		System.out.println("7: " + createANNInput(img_7, 7));
-//		System.out.println("3: " + createANNInput(img_3, 3));
-//		System.out.println("3: " + createANNInput(img_3_2, 3));
+		convertToBlackAndWhite("src/data/raw/cropped/cropped_0_2.png"); // creates cropped_0_2_bw.png in dir
 		
+		ImageResizer.resize("src/data/raw/cropped/cropped_0_2_bw.png", "src/data/processed/processed_0_2.png", 16, 16);
 		
+		/* Optional: create Java objects for images if you want them in memory for further work */
+		BufferedImage img_0_2 = createObjectFromFile("src/data/processed/processed_0_2.png");
 		
-		
+		System.out.println("Zero: " + createANNInput(img_0_2, 0, false));
 	}
 
 }

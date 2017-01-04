@@ -7,11 +7,13 @@ import java.util.Scanner;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-public class Grid extends JComponent {
+public class DigitVisualizer extends JComponent {
 	
 	static final int numRows = 16;
 	static final int numCols = 16;
+	static final int numPixels = 256;
 	static int imageIndex;
+	static String imagePath = "";
 	
 	public void paint(Graphics g) {
 		g.drawRect (0, 0, 800, 800);    
@@ -30,8 +32,8 @@ public class Grid extends JComponent {
 		xCount = 0; yCount = 0;
 		g.setColor(Color.BLACK);
 
-		double[] buff = populateArr("src/data/training/semeion.data.txt", imageIndex);
-		int idx =0;
+		double[] buff = populateArr(imagePath, imageIndex);
+		int idx = 0;
 		
 		for (int cols = 0; cols < numCols; cols++) {
 			for (int rows = 0; rows < numRows; rows++) {
@@ -58,11 +60,11 @@ public class Grid extends JComponent {
 			Scanner in = new Scanner(new File(path));
 		
 			// Skip to the right line first
-			for (int i =0; i<index; i++) {
+			for (int i = 0; i < index; i++) {
 				in.nextLine();
 			}
 			
-			while (stop < 256) 
+			while (stop < numPixels) 
 				buff[stop++] = in.nextDouble();
 			
 			in.close();
@@ -79,11 +81,12 @@ public class Grid extends JComponent {
 		// imageIndex = 0 will draw the first line of semeion.data)
 		// I don't check for invalid arguments so be sure that -1 < imageIndex < 1593 (if using semeion.data)
 		imageIndex = 4;
+		imagePath = "src/data/training/semeion.data.txt";
 		
 		JFrame window = new JFrame();
 		window.setSize(900,900);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.getContentPane().add(new Grid());
+		window.getContentPane().add(new DigitVisualizer());
 		window.setVisible(true);
 		window.setTitle("Pixel Visualizer");
 	}

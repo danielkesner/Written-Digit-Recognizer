@@ -6,7 +6,7 @@ The data used comes from: https://archive.ics.uci.edu/ml/datasets/Semeion+Handwr
 
 Below is an start-to-finish workflow example that begins with the user writing and photographing a number and ends with the neural network identifying the number you wrote.
 
-1. Begin by writing any number on a blank, unlined sheet of paper. If possible, use a thicker pen instead of a pencil or ballpoint pen. Using any digital camera (a smartphone is fine), take a picture of the handwritten digit. Try to zoom in as much as possible (although not so far that the camera can't focus on your handwriting) and try to keep the number in the center of the screen. See /src/data/raw/uncropped for examples.
+1. Begin by writing any number on a blank, unlined sheet of paper. If possible, use a thicker pen instead of a pencil or ballpoint pen. Using any digital camera (a smartphone is fine), take a picture of the handwritten digit. Try to zoom in on the number you wrote as much as possible until the camera is unable to focus, and try to keep the number in the center of the screen. See /src/data/raw/uncropped for examples.
 
 2. Using any kind of basic editor, crop the picture so that the number you wrote fills as much of the frame as possible. See /src/data/raw/cropped for examples.
 

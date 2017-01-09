@@ -4,7 +4,7 @@ In this project I trained a Neural Network in Matlab to recognize individual han
 
 The data used comes from: https://archive.ics.uci.edu/ml/datasets/Semeion+Handwritten+Digit. The UCI page also contains a more in-depth explanation of the semeion.data dataset used to train the network. My thanks to Tactile Srl for making the data publically available.
 
-Below is an start-to-finish workflow example that begins with the user writing and photographing a number and ends with the neural network attempting to identify the number you wrote.
+Below is an start-to-finish workflow example that begins with the user writing and photographing a number and ends with the neural network identifying the number you wrote.
 
 1. Begin by writing any number on a blank, unlined sheet of paper. If possible, use a thicker pen instead of a pencil or ballpoint pen. Using any digital camera (a smartphone is fine), take a picture of the handwritten digit. Try to zoom in as much as possible (although not so far that the camera can't focus on your handwriting) and try to keep the number in the center of the screen. See /src/data/raw/uncropped for examples.
 
